@@ -547,6 +547,16 @@ flarum-nicknames:
   ref:
     change_nickname: Görünen Adı Değiştir
     nickname: Görünen Ad
+  admin:
+    permissions:
+      edit_own_nickname_label: Kendi takma adını düzenle
+    settings:
+      max_label: Takma ad için en fazla karakter
+      min_label: Takma ad için en az karakter
+      set_on_registration_label: Kayıt sırasında takma ad belirlemeye izin ver
+      unique_label: Takma adlar benzersiz olsun
+      random_username_help: Kayıt formundaki "kullanıcı adı" alanını gizler ve yerine rastgele bir sayı kullanır. Ayrıca "takma ad" alanını zorunlu yapar. Yalnızca "Kayıt sırasında takma ad belirlemeye izin ver" açıkken geçerlidir.
+    wrong_driver: Bu eklentinin çalışması için <a><strong>Temel Ayarlar</strong></a> sayfasında görünen ad sürücüsü olarak "nickname" (takma ad) seçmelisin.
 flarum-suspend:
   forum:
     notifications:
@@ -807,6 +817,19 @@ fof-drafts:
   forum:
     dropdown:
       scheduled_icon_tooltip_formatter: L [saat] LT
+      scheduled_icon_tooltip: '{datetime} için zamanlandı'
+    schedule_draft_modal:
+      scheduled_text: '{datetime} tarihinde yayımlanmak üzere zamanlandı.'
+      scheduled_error: 'Taslak zamanlanamadı: {error}.'
+      unschedule_button: Zamanlamayı kaldır
+      unschedule_warning: Bu taslağın zamanlamasını kaldırmak istediğine emin misin?
+      no_title_error: Zamanlamadan önce bir tartışma başlığı girmen gerekiyor.
+  admin:
+    settings:
+      schedule_log_output: Zamanlayıcı çıktısını günlük dosyasına ekle
+      schedule_on_one_server: Görev zamanlayıcıda 'onOneServer()' yönergesini kullan (Redis/Memcache gerekir)
+  ref:
+    schedule_draft: Taslağı zamanla
 fof-follow-tags:
   email:
     newDiscussionInTag:
@@ -848,6 +871,8 @@ fof-impersonate:
     settings:
       require_reason_help: Gerekçe, hangisi etkinse denetim kaydına (flarum/audit) ve/veya her iki hesaba moderatör notu (fof/moderator-notes) olarak kaydedilir.
       title: Kullanıcı Gözünden Bakma
+    permissions:
+      login: Diğer kullanıcılar olarak giriş yap
   forum:
     notice:
       message: Şu anda {username} olarak görüntülüyorsun.
@@ -931,6 +956,7 @@ fof-merge-discussions:
   forum:
     modal:
       preview_truncated: '{total} gönderiden {from}–{to} arası gösteriliyor.'
+      ordering_heading: Birleştirme sırası
 fof-prevent-necrobumping:
   forum:
     composer:
@@ -1279,3 +1305,46 @@ huseyinfiliz-leaderboard:
   admin:
     settings:
       section_gamification: Oyunlaştırma
+fof-formatting:
+  admin:
+    plugins:
+      FancyPants: Gelişmiş tipografi kullan (akıllı tırnak, uzun tire, üç nokta)
+      HTMLEntities: HTML karakter kodlarını (&hearts; gibi) karaktere dönüştür
+fof-moderator-notes:
+  admin:
+    permissions:
+      viewnotes: Moderatör notlarını görüntüle
+fof-reactions:
+  forum:
+    disabled-reaction: Bu tepkiyi şu an kullanamazsın, lütfen sayfayı yenile
+    notification: '{username}, gönderine {reaction} tepkisi bıraktı'
+    reaction_button_label: '{reaction} ile tepki ver'
+    modal:
+      confirm_remove_all_reaction_type: Bu gönderideki tüm {reaction} tepkilerini kaldırmak istediğine emin misin? Bu işlem geri alınamaz.
+      confirm_remove_user_reaction: '{username} kullanıcısının bu gönderideki {reaction} tepkisini kaldırmak istediğine emin misin? Bu işlem geri alınamaz.'
+  admin:
+    page:
+      cdn:
+        help: 'Varsayılan olarak tepki görselleri Cloudflare CDN''inden sunulur. İstersen başka bir CDN adresi de girebilirsin. <code>[codepoint]</code> ifadesi emojinin kod noktasıyla değiştirilir.
+
+
+          Örneğin jsdelivr üzerinden Noto Emoji''ye geçmek için <code>https://cdn.jsdelivr.net/gh/googlefonts/noto-emoji@v2.040/svg/emoji_u[codepoint].svg</code> adresini girebilirsin.
+
+
+          CDN''in Emoji/Unicode {emojibase} veya daha yeni bir sürümü desteklemeli. Twemoji sürümünü eklemek için [twemoji] kullan.
+
+          '
+      reactions:
+        Helptext: Emojinin ya da Font Awesome simgesinin adını (tanımlayıcısını) gir ve türünü seç.
+        delete_confirmation: Bu tepkiyi silmek istediğine emin misin? Bu işlem geri alınamaz.
+      convert:
+        help: Eklentiyi yeni güncellediysen tepkilerin dönüştürülmesi gerekir. Yeni kurduysan bu mesajı görmezden gelebilirsin.
+        converting: Tepkilerin dönüştürülüyor. Birkaç dakika sonra sayfayı yenilediğinde işlem tamamlanmış olur. (Süre, toplam tepki sayısına göre değişebilir.)
+      settings:
+        allow-anonymous-help: Açıksa misafirler ve anonim kullanıcılar gönderilere tepki bırakabilir. Anonim tepkiler bir profile bağlanmaz, tepki listesinde toplu gösterilir.
+        integrations:
+          gamification:
+            upvoteHelptext: Otomatik olarak artı oya dönüştürülecek tepkinin tanımlayıcısını gir
+            downvoteHelptext: Otomatik olarak eksi oya dönüştürülecek tepkinin tanımlayıcısını gir
+          likes:
+            Helptext: Otomatik olarak beğeniye dönüştürülecek tepkinin tanımlayıcısını gir
